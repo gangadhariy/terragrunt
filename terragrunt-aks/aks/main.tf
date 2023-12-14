@@ -23,3 +23,10 @@ resource "azurerm_kubernetes_cluster" "default" {
     environment = "var.environment"
   }
 }
+terraform {
+  backend "azurerm"
+    resource_group_name   = "Cluster-02-rg"
+    storage_account_name  = "gklstorageaccount"
+    container_name        = "gklcontaine"
+    key                   = "/home/rhel/terragrunt/terragrunt-aks/aks/terraform.tfstate"
+}
