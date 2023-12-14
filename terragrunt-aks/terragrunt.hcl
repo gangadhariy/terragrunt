@@ -34,7 +34,7 @@ inputs = {
   environment     = local.env
   resource_group_name  = local.resourcegroup_name
   appId           = local.clientid
-  password        = local.password
+  secret          = local.password
   
 
 }
