@@ -18,7 +18,7 @@ variable "appId" {
   description = "The client-id  to apply to the AKS cluster"
 }
 
-variable "password" {
+variable "secret" {
   type        = string
   description = "The password to apply to the AKS cluster"
 }
