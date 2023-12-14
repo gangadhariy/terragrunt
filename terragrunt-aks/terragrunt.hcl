@@ -11,7 +11,7 @@ locals {
   azure_location     = local.region_vars.locals.azure_location
   resourcegroup_name = local.resource_group.locals.rg-name 
   appId              = local.clientid.locals.clientid
-  secret             = local.password.locals.secret
+  password           = local.password.locals.secret
 }
 
 # Terragrunt will copy the Terraform configurations specified by the source parameter, along with any files in the
