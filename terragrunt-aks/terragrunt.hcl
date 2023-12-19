@@ -4,22 +4,21 @@ locals {
   region_vars      = read_terragrunt_config(find_in_parent_folders("azure.hcl"))
   resource_group   = read_terragrunt_config(find_in_parent_folders("azure.hcl"))
   clientid         = read_terragrunt_config(find_in_parent_folders("creds.hcl"))
-  clientpass       = read_terragrunt_config(find_in_parent_folders("creds.hcl"))
-  tenant           = local.tenant-id.locals.tenant
-
+  password         = read_terragrunt_config(find_in_parent_folders("creds.hcl"))
+  tenant-id        = read_terragrunt_config(find_in_parent_folders("creds.hcl"))
   # Extract out common variables for reuse
   env                = local.environment_vars.locals.environment
   azure_location     = local.region_vars.locals.azure_location
-  resourcegroup_name = local.resource_group.locals.rg-name 
+  resourcegroup_name = local.resource_group.locals.rg-name
   appId              = local.clientid.locals.clientid
-  password           = local.password.locals.secret
+  client-pass        = local.password.locals.secret
   tenant             = local.tenant-id.locals.tenant
 }
 
 # Terragrunt will copy the Terraform configurations specified by the source parameter, along with any files in the
 # working directory, into a temporary folder, and execute your Terraform commands in that folder.
 terraform {
-  source = "../aks"
+  source = "../terragrunt-aks/aks"
 }
 
 # Include all settings from the root terragrunt.hcl file
@@ -36,7 +35,7 @@ inputs = {
   environment     = local.env
   resource_group_name  = local.resourcegroup_name
   appId           = local.clientid
-  secret          = local.clientpass
+  secret          = local.client-pass
   tenant          = local.tenant
 
 }

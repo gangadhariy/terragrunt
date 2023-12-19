@@ -1,4 +1,5 @@
 locals {
     clientid  =  ""
-    secret   =  ""
+    secret    =  ""
+    tenant    =  ""
 }
