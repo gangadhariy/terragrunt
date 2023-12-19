@@ -7,9 +7,9 @@ remote_state {
     if_exists = "overwrite_terragrunt"
   }
   config = {
-    resource_group_name   = "Cluster-02-rg"
+    resource_group_name   = "cluster-1-rg"
     storage_account_name  = "gklstorageaccount"
-    container_name        = "gklcontaine"
+    container_name        = "gklcontainer"
     key                   = "${path_relative_to_include()}/terraform.tfstate"
   }
 }
@@ -19,7 +19,7 @@ generate "provider" {
   if_exists = "overwrite_terragrunt"
   contents  = <<EOF
 provider "azurerm" {
-  features = {}
+  features {}
 }
 EOF
 }

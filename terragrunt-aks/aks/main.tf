@@ -6,7 +6,7 @@ resource "azurerm_kubernetes_cluster" "default" {
   kubernetes_version  = "1.26.3"
 
   default_node_pool {
-    name            = "aks-test-pool"
+    name            = "akspool01"
     node_count      = 2
     vm_size         = "Standard_D2_v2"
     os_disk_size_gb = 30
