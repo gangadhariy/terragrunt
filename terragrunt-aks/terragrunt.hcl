@@ -4,7 +4,8 @@ locals {
   region_vars      = read_terragrunt_config(find_in_parent_folders("azure.hcl"))
   resource_group   = read_terragrunt_config(find_in_parent_folders("azure.hcl"))
   clientid         = read_terragrunt_config(find_in_parent_folders("creds.hcl"))
-  password         = read_terragrunt_config(find_in_parent_folders("creds.hcl"))
+  clientpass       = read_terragrunt_config(find_in_parent_folders("creds.hcl"))
+  tenant           = local.tenant-id.locals.tenant
 
   # Extract out common variables for reuse
   env                = local.environment_vars.locals.environment
@@ -12,6 +13,7 @@ locals {
   resourcegroup_name = local.resource_group.locals.rg-name 
   appId              = local.clientid.locals.clientid
   password           = local.password.locals.secret
+  tenant             = local.tenant-id.locals.tenant
 }
 
 # Terragrunt will copy the Terraform configurations specified by the source parameter, along with any files in the
@@ -34,7 +36,7 @@ inputs = {
   environment     = local.env
   resource_group_name  = local.resourcegroup_name
   appId           = local.clientid
-  secret          = local.password
-  
+  secret          = local.clientpass
+  tenant          = local.tenant
 
 }
