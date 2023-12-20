@@ -3,17 +3,11 @@ locals {
   environment_vars = read_terragrunt_config(find_in_parent_folders("azure.hcl"))
   region_vars      = read_terragrunt_config(find_in_parent_folders("azure.hcl"))
   resource_group   = read_terragrunt_config(find_in_parent_folders("azure.hcl"))
-  clientid         = read_terragrunt_config(find_in_parent_folders("creds.hcl"))
-  password         = read_terragrunt_config(find_in_parent_folders("creds.hcl"))
-  tenant-id        = read_terragrunt_config(find_in_parent_folders("creds.hcl"))
   cluster-name     = read_terragrunt_config(find_in_parent_folders("creds.hcl"))
   # Extract out common variables for reuse
   env                = local.environment_vars.locals.environment
   azure_location     = local.region_vars.locals.azure_location
   resourcegroup_name = local.resource_group.locals.rg-name
-  appId              = local.clientid.locals.clientid
-  client-pass        = local.password.locals.secret
-  tenant             = local.tenant-id.locals.tenant
   aks-name           = local.cluster-name.locals.cluster
 }
 
@@ -37,8 +31,5 @@ inputs = {
   environment     = local.env
   resource_group_name  = local.resourcegroup_name
   cluster_name    = local.aks-name
-  appId           = local.clientid
-  secret          = local.client-pass
-  tenant          = local.tenant
 
 }

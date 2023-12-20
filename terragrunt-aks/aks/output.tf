@@ -21,3 +21,8 @@ output "location" {
 output "environment" {
   value = azurerm_kubernetes_cluster.default.tags.environment
 }
+
+output "config" {
+  value = azurerm_kubernetes_cluster.default.kube_config_raw
+  sensitive = true
+}

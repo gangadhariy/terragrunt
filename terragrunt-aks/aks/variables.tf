@@ -13,12 +13,3 @@ variable "cluster_name" {
   description = "The name of the AKS cluster"
 }
 
-variable "appId" {
-  type        = string
-  description = "The client-id  to apply to the AKS cluster"
-}
-
-variable "secret" {
-  type        = string
-  description = "The password to apply to the AKS cluster"
-}
