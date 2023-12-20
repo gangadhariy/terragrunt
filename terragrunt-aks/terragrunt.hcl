@@ -26,7 +26,6 @@ include {
 inputs = {
   node_count      = 1
   vm_size         = "Standard_D2_v2"
-  os_disk_size_gb = 50
   location        = local.azure_location
   environment     = local.env
   resource_group_name  = local.resourcegroup_name
