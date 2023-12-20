@@ -22,7 +22,7 @@ resource "azurerm_kubernetes_cluster" "default" {
 
 
   tags = {
-    environment = "var.environment"
+    environment = var.environment
   }
 }
 
