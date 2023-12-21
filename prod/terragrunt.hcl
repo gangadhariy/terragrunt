@@ -1,9 +1,9 @@
 locals {
   # Automatically load environment-level variables
-  environment_vars = read_terragrunt_config(find_in_parent_folders("azure.hcl"))
-  region_vars      = read_terragrunt_config(find_in_parent_folders("azure.hcl"))
-  resource_group   = read_terragrunt_config(find_in_parent_folders("azure.hcl"))
-  cluster-name     = read_terragrunt_config(find_in_parent_folders("creds.hcl"))
+  environment_vars = read_terragrunt_config(find_in_parent_folders("azure-prod.hcl"))
+  region_vars      = read_terragrunt_config(find_in_parent_folders("azure-prod.hcl"))
+  resource_group   = read_terragrunt_config(find_in_parent_folders("azure-prod.hcl"))
+  cluster-name     = read_terragrunt_config(find_in_parent_folders("azure-prod.hcl"))
   # Extract out common variables for reuse
   env                = local.environment_vars.locals.environment
   azure_location     = local.region_vars.locals.azure_location
