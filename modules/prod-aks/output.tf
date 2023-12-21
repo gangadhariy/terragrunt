@@ -1,28 +1,15 @@
 output "resource_group_name" {
-  value = azurerm_kubernetes_cluster.default.resource_group_name
+  value = azurerm_kubernetes_cluster.prod.resource_group_name
 }
 
 output "cluster_name" {
-  value = azurerm_kubernetes_cluster.default.name
+  value = azurerm_kubernetes_cluster.prod.name
 }
 
 output "location" {
-  value = azurerm_kubernetes_cluster.default.location
+  value = azurerm_kubernetes_cluster.prod.location
 }
-
-#output "service_principal_id" {
-#  value = azurerm_kubernetes_cluster.default.service_principal.client_id
-#}
-
-#output "service_principal_password" {
-#  value = azurerm_kubernetes_cluster.default.service_principal.client_secret
-#}
 
 output "environment" {
-  value = azurerm_kubernetes_cluster.default.tags.environment
-}
-
-output "config" {
-  value = azurerm_kubernetes_cluster.default.kube_config_raw
-  sensitive = true
+  value = azurerm_kubernetes_cluster.prod.tags.environment
 }
