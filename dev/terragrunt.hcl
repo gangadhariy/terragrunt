@@ -30,7 +30,7 @@ inputs = {
   environment     = local.env
   resource_group_name  = local.resourcegroup_name
   cluster_name    = local.aks-name
-  kubeconfig      =  kubeconfig-dev
-  pool            =  dev-pool
+  kubeconfig      =  "kubeconfig-dev"
+  pool            =  "dev-pool"
 
 }
