@@ -27,6 +27,6 @@ resource "azurerm_kubernetes_cluster" "prod" {
 }
 
 resource "local_file" "kubeconfig" {
-  content = azurerm_kubernetes_cluster.default.kube_config_raw
-  filename = "kubeconfig-prod"
+  content = azurerm_kubernetes_cluster.prod.kube_config_raw
+  filename = "${path.module}/kubeconfig-prod"
 }
