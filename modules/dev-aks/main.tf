@@ -28,5 +28,5 @@ resource "azurerm_kubernetes_cluster" "dev" {
 
 resource "local_file" "kubeconfig" {
   content = azurerm_kubernetes_cluster.dev.kube_config_raw
-  filename = "kubeconfig-dev"
+  filename = "${path.module}/kubeconfig-dev"
 }
