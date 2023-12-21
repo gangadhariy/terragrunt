@@ -31,6 +31,6 @@ inputs = {
   resource_group_name  = local.resourcegroup_name
   cluster_name    = local.aks-name
   kubeconfig      =  "kubeconfig-dev"
-  pool            =  "dev-pool"
+  pool            =  "devpool"
 
 }
