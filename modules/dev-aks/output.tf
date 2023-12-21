@@ -10,19 +10,9 @@ output "location" {
   value = azurerm_kubernetes_cluster.default.location
 }
 
-#output "service_principal_id" {
-#  value = azurerm_kubernetes_cluster.default.service_principal.client_id
-#}
-
-#output "service_principal_password" {
-#  value = azurerm_kubernetes_cluster.default.service_principal.client_secret
-#}
 
 output "environment" {
-  value = azurerm_kubernetes_cluster.default.tags.environment
+  value = azurerm_kubernetes_cluster.dev.tags.environment
 }
 
-output "config" {
-  value = azurerm_kubernetes_cluster.default.kube_config_raw
-  sensitive = true
-}
+
