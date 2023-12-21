@@ -17,3 +17,13 @@ variable "environment" {
   type        = string
   description = "The environment of the AKS cluster"
 }
+
+variable "pool" {
+  type        = string
+  description = "The name  of the AKS nodepool"
+}
+
+variable "kubeconfig" {
+  type        = string
+  description = "The name of the AKS cluster config file"
+}
