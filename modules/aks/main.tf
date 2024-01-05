@@ -16,17 +16,17 @@ resource "azurerm_subnet" "subnet" {
   address_prefixes    = var.addr_prefix
 }
 
+resource "azurerm_public_ip" "natip" {
+  name                = var.pubip_name
+  resource_group_name = azurerm_resource_group.aks.name
+  location            = azurerm_resource_group.aks.location
+}
+
 resource "azurerm_nat_gateway" "nat" {
   name                = var.nat_name
   resource_group_name = azurerm_resource_group.aks.name
   location            = azurerm_resource_group.aks.location
   public_ip_address   = azurerm_public_ip.natip.id
-}
-
-resource "azurerm_public_ip" "natip" {
-  name                = var.pubip_name
-  resource_group_name = azurerm_resource_group.aks.name
-  location            = azurerm_resource_group.aks.location
 }
 
 resource "azurerm_route_table" "route" {
