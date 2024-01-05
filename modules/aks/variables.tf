@@ -27,3 +27,50 @@ variable "kubeconfig" {
   type        = string
   description = "The name of the AKS cluster config file"
 }
+variable "vn_name" {
+  type        = string
+  description = "The name of the virtual network"
+
+}
+
+variable "addr_space" {
+  type        = string
+  description = "adress spce of the virtual network"
+
+}
+
+variable "sub_name" {
+  type        = string
+  description = "name of the subnet"
+
+}
+
+variable "addr_prefix" {
+  type        = string
+  description = "prefix of the subnet"
+
+}
+
+variable "nat_name" {
+  type        = string
+  description = "name of the nat gateway"
+
+}
+
+variable "pubip_name" {
+  type        = string
+  description = "name of the public ip"
+
+}
+
+variable "sec_grp_name" {
+  type        = string
+  description = "name of the security group"
+
+}
+
+variable "route_name" {
+  type        = string
+  description = "name of the route table"
+
+}
