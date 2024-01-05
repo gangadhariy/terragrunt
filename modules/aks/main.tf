@@ -29,16 +29,19 @@ resource "azurerm_public_ip" "natip" {
   location            = azurerm_resource_group.aks.location
 }
 
-resource "azurerm_network_security_group" "sec-grp" {
-  name                = var.sec_grp_name
-  resource_group_name = azurerm_resource_group.aks.name
-  location            = azurerm_resource_group.aks.location
-}
-
 resource "azurerm_route_table" "route" {
   name                = var.route_name
   resource_group_name = azurerm_resource_group.example.name
   location            = azurerm_resource_group.example.location
+  route {
+    name           = "internet-route"
+    address_prefix = "0.0.0.0/0"
+    next_hop_type  = "Internet"
+  }
+}
+resource "azurerm_subnet_association" "public_subnet_association" {
+  subnet_id      = azurerm_subnet.subnet.id
+  route_table_id = azurerm_route_table.route.id
 }
 resource "azurerm_kubernetes_cluster" "aks" {
   name                = var.cluster_name
@@ -63,8 +66,20 @@ resource "azurerm_kubernetes_cluster" "aks" {
     environment = var.environment
   }
 }
+network_profile {
+    network_plugin = "azure"
+    
+    # Specify the subnets for AKS nodes
+    service_cidr     = azurerm_subnet.subnet.address_prefixes[0]  # Use the subnet address space for services
+    dns_service_ip   = "10.2.7.10"  # Specify a DNS service IP within the subnet
+    docker_bridge_cidr = "172.17.0.1/16"
 
+    load_balancer_sku = "standard"
+
+    outbound_type = "loadBalancer"
+  }
 resource "local_file" "kubeconfig" {
   content = azurerm_kubernetes_cluster.aks.kube_config_raw
   filename = var.kubeconfig
 }
+
