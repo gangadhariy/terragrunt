@@ -34,7 +34,7 @@ variable "vn_name" {
 }
 
 variable "addr_space" {
-  type        = string
+  type        = list(string)
   description = "adress spce of the virtual network"
 
 }
