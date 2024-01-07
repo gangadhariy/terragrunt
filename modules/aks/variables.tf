@@ -66,10 +66,10 @@ variable "pubip_name" {
 =======
 variable "dns_ip" {
   type        = list(string)
-  description = "name of the public ip"
-
+  description = "List of DNS IPs"
 }
 >>>>>>> 7b25cf874e26590c47aca09494bfd142b0c6ca83
+
 
 variable "route_name" {
   type        = string
