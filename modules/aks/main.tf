@@ -65,7 +65,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   tags = {
     environment = var.environment
   }
-}
+
   network_profile {
     network_plugin = "azure"
     
@@ -78,6 +78,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
 
     outbound_type = "loadBalancer"
   }
+}
 resource "local_file" "kubeconfig" {
   content = azurerm_kubernetes_cluster.aks.kube_config_raw
   filename = var.kubeconfig
