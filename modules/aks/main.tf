@@ -30,8 +30,8 @@ resource "azurerm_nat_gateway" "nat" {
 }
 
 resource "azurerm_nat_gateway_public_ip_association" "natassc" {
-  nat_gateway_id       = azurerm_nat_gateway.this.id
-  public_ip_address_id = azurerm_public_ip.nat.id
+  nat_gateway_id       = azurerm_nat_gateway.nat.id
+  public_ip_address_id = azurerm_public_ip.natip.id
 }
 
 resource "azurerm_subnet_nat_gateway_association" "subnatassc" {
