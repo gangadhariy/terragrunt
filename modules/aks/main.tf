@@ -20,13 +20,14 @@ resource "azurerm_public_ip" "natip" {
   name                = var.pubip_name
   resource_group_name = azurerm_resource_group.aks.name
   location            = azurerm_resource_group.aks.location
+  allocation_method   = "Static"
 }
 
 resource "azurerm_nat_gateway" "nat" {
   name                = var.nat_name
   resource_group_name = azurerm_resource_group.aks.name
   location            = azurerm_resource_group.aks.location
-  public_ip_address_id   = azurerm_public_ip.natip.id
+  public_ip_prefix_ids = [azurerm_public_ip.natip.id]
 }
 
 resource "azurerm_route_table" "route" {

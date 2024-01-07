@@ -46,7 +46,7 @@ variable "sub_name" {
 }
 
 variable "addr_prefix" {
-  type        = string
+  type        = list(string)
   description = "prefix of the subnet"
 
 }
