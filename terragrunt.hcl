@@ -9,7 +9,7 @@ remote_state {
   config = {
     resource_group_name   = "cluster-1-rg"
     storage_account_name  = "gklstorageaccount"
-    container_name        = "gklcontainer"
+    container_name        = "terragrunt"
     key                   = "${path_relative_to_include()}/terraform.tfstate"
   }
 }
