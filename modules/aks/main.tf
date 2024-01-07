@@ -27,7 +27,7 @@ resource "azurerm_nat_gateway" "nat" {
   name                = var.nat_name
   resource_group_name = azurerm_resource_group.aks.name
   location            = azurerm_resource_group.aks.location
-  public_ip_prefix_ids = [azurerm_public_ip.natip.id]
+  public_ip_address_ids = [azurerm_public_ip.nat_ip.id]
 }
 
 resource "azurerm_route_table" "route" {
