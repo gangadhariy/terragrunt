@@ -62,10 +62,9 @@ variable "pubip_name" {
   description = "name of the public ip"
 
 }
-
-variable "sec_grp_name" {
-  type        = string
-  description = "name of the security group"
+variable "dns_ip" {
+  type        = list(string)
+  description = "name of the public ip"
 
 }
 
