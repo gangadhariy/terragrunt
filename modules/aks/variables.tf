@@ -63,12 +63,6 @@ variable "pubip_name" {
 
 }
 
-variable "sec_grp_name" {
-  type        = string
-  description = "name of the security group"
-
-}
-
 variable "route_name" {
   type        = string
   description = "name of the route table"
