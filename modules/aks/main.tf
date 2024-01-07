@@ -27,7 +27,16 @@ resource "azurerm_nat_gateway" "nat" {
   name                = var.nat_name
   resource_group_name = azurerm_resource_group.aks.name
   location            = azurerm_resource_group.aks.location
-  public_ip_address_ids = [azurerm_public_ip.nat_ip.id]
+}
+
+resource "azurerm_nat_gateway_public_ip_association" "natassc" {
+  nat_gateway_id       = azurerm_nat_gateway.this.id
+  public_ip_address_id = azurerm_public_ip.nat.id
+}
+
+resource "azurerm_subnet_nat_gateway_association" "subnatassc" {
+  subnet_id      = azurerm_subnet.subnet.id
+  nat_gateway_id = azurerm_nat_gateway.nat.id
 }
 
 resource "azurerm_route_table" "route" {
@@ -72,7 +81,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
     
     # Specify the subnets for AKS nodes
     service_cidr     = azurerm_subnet.subnet.address_prefixes[0]  # Use the subnet address space for services
-    dns_service_ip   = "10.2.0.10"  # Specify a DNS service IP within the subnet
+    dns_service_ip   = var.dns_ip  # Specify a DNS service IP within the subnet
     docker_bridge_cidr = "172.17.0.1/16"
 
     load_balancer_sku = "standard"
