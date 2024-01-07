@@ -26,20 +26,20 @@ resource "azurerm_nat_gateway" "nat" {
   name                = var.nat_name
   resource_group_name = azurerm_resource_group.aks.name
   location            = azurerm_resource_group.aks.location
-  public_ip_address   = azurerm_public_ip.natip.id
+  public_ip_address_id   = azurerm_public_ip.natip.id
 }
 
 resource "azurerm_route_table" "route" {
   name                = var.route_name
-  resource_group_name = azurerm_resource_group.example.name
-  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.aks.name
+  location            = azurerm_resource_group.aks.location
   route {
     name           = "internet-route"
     address_prefix = "0.0.0.0/0"
     next_hop_type  = "Internet"
   }
 }
-resource "azurerm_subnet_association" "public_subnet_association" {
+resource "azurerm_subnet_route_table_association" "public_subnet_association" {
   subnet_id      = azurerm_subnet.subnet.id
   route_table_id = azurerm_route_table.route.id
 }
