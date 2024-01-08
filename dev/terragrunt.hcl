@@ -29,7 +29,7 @@ locals {
 # working directory, into a temporary folder, and execute your Terraform commands in that folder.
 terraform {
   source = "../modules/vnet"
-  source = "../modules/aks"
+#  source = "../modules/aks"
 }
 
 # Include all settings from the root terragrunt.hcl file
