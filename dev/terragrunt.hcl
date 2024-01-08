@@ -51,5 +51,5 @@ inputs = {
   nat_name        =  local.nat
   pubip_name      =  local.pubip
   route_name      =  local.route
-  dns_ip          =  ["10.2.0.10"]
+  dns_ip          =  ["10.2.1.10"]
 }
