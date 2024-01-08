@@ -1,16 +1,16 @@
 locals {
   # Automatically load environment-level variables
-  environment_vars = read_terragrunt_config(find_in_parent_folders("azure-dev.hcl"))
-  region_vars      = read_terragrunt_config(find_in_parent_folders("azure-dev.hcl"))
-  resource_group   = read_terragrunt_config(find_in_parent_folders("azure-dev.hcl"))
-  cluster-name     = read_terragrunt_config(find_in_parent_folders("azure-dev.hcl"))
-  vnet             = read_terragrunt_config(find_in_parent_folders("azure-dev.hcl"))
-  addr-space       = read_terragrunt_config(find_in_parent_folders("azure-dev.hcl"))  
-  subnet-name      = read_terragrunt_config(find_in_parent_folders("azure-dev.hcl"))
-  addr-prefix      = read_terragrunt_config(find_in_parent_folders("azure-dev.hcl"))
-  nat-name         = read_terragrunt_config(find_in_parent_folders("azure-dev.hcl"))
-  pub-ip           = read_terragrunt_config(find_in_parent_folders("azure-dev.hcl"))
-  route-name       = read_terragrunt_config(find_in_parent_folders("azure-dev.hcl"))
+  environment_vars = read_terragrunt_config(find_in_parent_folders("azure-prod.hcl"))
+  region_vars      = read_terragrunt_config(find_in_parent_folders("azure-prod.hcl"))
+  resource_group   = read_terragrunt_config(find_in_parent_folders("azure-prod.hcl"))
+  cluster-name     = read_terragrunt_config(find_in_parent_folders("azure-prod.hcl"))
+  vnet             = read_terragrunt_config(find_in_parent_folders("azure-prod.hcl"))
+  addr-space       = read_terragrunt_config(find_in_parent_folders("azure-prod.hcl"))  
+  subnet-name      = read_terragrunt_config(find_in_parent_folders("azure-prod.hcl"))
+  addr-prefix      = read_terragrunt_config(find_in_parent_folders("azure-prod.hcl"))
+  nat-name         = read_terragrunt_config(find_in_parent_folders("azure-prod.hcl"))
+  pub-ip           = read_terragrunt_config(find_in_parent_folders("azure-prod.hcl"))
+  route-name       = read_terragrunt_config(find_in_parent_folders("azure-prod.hcl"))
 # Extract out common variables for reuse
   env                = local.environment_vars.locals.environment
   azure_location     = local.region_vars.locals.azure_location
