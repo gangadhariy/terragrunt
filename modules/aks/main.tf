@@ -80,13 +80,9 @@ resource "azurerm_kubernetes_cluster" "aks" {
 
   network_profile {
     network_plugin = "azure"
-    
-    # Specify the subnets for AKS nodes
-    service_cidr     = azurerm_subnet.subnet.address_prefixes[0]  # Use the subnet address space for services
-    dns_service_ip   = var.dns_ip[0]  # Specify a DNS service IP within the subnet
-
+    service_cidr     = azurerm_subnet.subnet.address_prefixes[0]
+    dns_service_ip   = var.dns_ip[0]  
     load_balancer_sku = "standard"
-
     outbound_type = "loadBalancer"
   }
 }
