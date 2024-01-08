@@ -21,12 +21,14 @@ resource "azurerm_public_ip" "natip" {
   resource_group_name = azurerm_resource_group.aks.name
   location            = azurerm_resource_group.aks.location
   allocation_method   = "Static"
+  sku                 = "Standard"
 }
 
 resource "azurerm_nat_gateway" "nat" {
   name                = var.nat_name
   resource_group_name = azurerm_resource_group.aks.name
   location            = azurerm_resource_group.aks.location
+  sku_name                = "Standard"
 }
 
 resource "azurerm_nat_gateway_public_ip_association" "natassc" {
