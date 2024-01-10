@@ -51,6 +51,6 @@ inputs = {
   nat_name        =  local.nat
   pubip_name      =  local.pubip
   route_name      =  local.route
-  dns_ip          =  ["10.3.1.10"]
+  dns_ip          =  ["10.3.2.10"]
   svc_cidr        =  ["10.3.2.0/24"]
 }
