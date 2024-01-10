@@ -11,6 +11,8 @@ locals {
   nat-name         = read_terragrunt_config(find_in_parent_folders("azure-prod.hcl"))
   pub-ip           = read_terragrunt_config(find_in_parent_folders("azure-prod.hcl"))
   route-name       = read_terragrunt_config(find_in_parent_folders("azure-prod.hcl"))
+  dns-ip           = read_terragrunt_config(find_in_parent_folders("azure-dev.hcl"))
+  svccidr          = read_terragrunt_config(find_in_parent_folders("azure-dev.hcl"))
 # Extract out common variables for reuse
   env                = local.environment_vars.locals.environment
   azure_location     = local.region_vars.locals.azure_location
@@ -23,6 +25,8 @@ locals {
   nat                = local.nat-name.locals.nat
   pubip              = local.pub-ip.locals.pubip
   route              = local.route-name.locals.route
+  dns                = local.dns-ip.locals.dns
+  svc-cidr           = local.svccidr.locals.svc-cidr
 }
 
 # Terragrunt will copy the Terraform configurations specified by the source parameter, along with any files in the
@@ -51,6 +55,6 @@ inputs = {
   nat_name        =  local.nat
   pubip_name      =  local.pubip
   route_name      =  local.route
-  dns_ip          =  ["10.3.2.10"]
-  svc_cidr        =  ["10.3.2.0/24"]
+  dns_ip          =  local.dns
+  svc_cidr        =  local.svc-cidr
 }
