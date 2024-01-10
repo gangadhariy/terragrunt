@@ -52,5 +52,5 @@ inputs = {
   pubip_name      =  local.pubip
   route_name      =  local.route
   dns_ip          =  ["10.2.1.10"]
-  svc_cidr        =  ["10.2.2.0"]
+  svc_cidr        =  ["10.2.2.0/24"]
 }
