@@ -81,7 +81,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
 
   network_profile {
     network_plugin = "azure"
-    service_cidr     = azurerm_subnet.subnet.address_prefixes[0]
+    service_cidr     = var.svc_cidr[0]
     dns_service_ip   = var.dns_ip[0]  
     load_balancer_sku = "standard"
     outbound_type = "loadBalancer"
