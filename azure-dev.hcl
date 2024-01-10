@@ -10,4 +10,6 @@ locals  {
   nat            =  "devnat"
   pubip          =  "devsub"
   route          =  "devroute"
+  dns            =  ["10.2.2.10"]
+  svc-cidr       =  ["10.2.2.0/24"] 
 }
