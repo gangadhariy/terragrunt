@@ -74,3 +74,9 @@ variable "route_name" {
   description = "name of the route table"
 
 }
+
+variable "svc_cidr" {
+  type        = list(string)
+  description = "service cidr"
+
+}
